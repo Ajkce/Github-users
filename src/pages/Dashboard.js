@@ -3,9 +3,21 @@ import { Info, Repos, User, Search, Navbar } from '../components';
 import loadingImage from '../images/preloader.gif';
 import { GithubContext } from '../context/context';
 const Dashboard = () => {
+  const {loading} = React.useContext(GithubContext);
+  if(loading){
+    return <main>
+      <Navbar></Navbar>
+      <Search></Search>
+      <img src={loadingImage}  className='loading-img'></img>
+    </main>
+  }
   return (
     <main>
-      <h2>Dashboard Page</h2>
+    <Navbar></Navbar>
+    <Search></Search>
+    <Info></Info>
+    <User></User>
+    <Repos></Repos>
     </main>
   );
 };
